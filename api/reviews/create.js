@@ -1,0 +1,3 @@
+import { db } from "hatchable";
+
+export const access="member"; export const methods=["POST"]; export default async function(req,res){const b=req.body||{};const productId=Number(b.product_id);const rating=Math.max(1,Math.min(5,Number(b.rating)||5));if(!productId||!b.body)return res.status(400).json({error:"product_id and body are required"});const r=await db.query("INSERT INTO store_reviews(product_id,user_id,name,rating,title,body) VALUES($1,$2,$3,$4,$5,$6) RETURNING id,created_at",[productId,req.member.id,String(req.member.display_name||req.member.handle||"Customer"),rating,String(b.title||""),String(b.body)]);res.status(201).json(r.rows[0])}

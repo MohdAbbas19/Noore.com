@@ -1,6 +1,6 @@
 [ai]
 required = true
-description = "AI used to generate ad copy, concepts, and creative directions."
+description = "AI services reserved for future creative/product content workflows."
 
 [auth]
 enabled = true
@@ -8,4 +8,11 @@ providers = ["email"]
 
 [db.tables.creatives]
 read = "own"
+write = "own"
+[db.tables.store_orders]
+read = "own"
+write = "own"
+
+[db.tables.store_reviews]
+read = "public"
 write = "own"

@@ -1,0 +1,3 @@
+import { db } from "hatchable";
+
+export const access="admin"; export const methods=["GET"]; export default async function(req,res){const a=await db.query("SELECT count(*)::int orders,coalesce(sum(total),0)::int revenue FROM store_orders");const b=await db.query("SELECT count(*)::int products FROM store_products WHERE active=true");const c=await db.query("SELECT count(*)::int customers FROM store_orders");const d=await db.query("SELECT order_status,count(*)::int count FROM store_orders GROUP BY order_status");res.json({orders:a.rows[0].orders,revenue:a.rows[0].revenue,products:b.rows[0].products,customers:c.rows[0].customers,statuses:d.rows})}

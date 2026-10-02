@@ -1,0 +1,1 @@
+CREATE TABLE store_reviews (id uuid PRIMARY KEY DEFAULT gen_random_uuid(), product_id integer NOT NULL REFERENCES store_products(id) ON DELETE CASCADE, user_id text, name text NOT NULL, rating integer NOT NULL, title text, body text NOT NULL, approved boolean NOT NULL DEFAULT true, created_at timestamptz NOT NULL DEFAULT now())

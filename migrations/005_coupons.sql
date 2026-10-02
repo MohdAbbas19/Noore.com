@@ -1,0 +1,1 @@
+CREATE TABLE store_coupons (code text PRIMARY KEY, discount_type text NOT NULL, discount_value integer NOT NULL, min_order integer NOT NULL DEFAULT 0, active boolean NOT NULL DEFAULT true, expires_at timestamptz, usage_limit integer, used_count integer NOT NULL DEFAULT 0)

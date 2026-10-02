@@ -1,0 +1,3 @@
+import { db } from "hatchable";
+
+export const access="public"; export const methods=["GET"]; export default async function(req,res){const q=String(req.query?.q||"").trim();const cat=String(req.query?.category||"all");const {rows}=await db.query("SELECT id,name,slug,category,price,compare_price,notes,description,ingredients,badge,visual,stock FROM store_products WHERE active=true AND ($1='' OR lower(name||' '||notes) LIKE lower('%'||$1||'%')) AND ($2='all' OR category=$2) ORDER BY id",[q,cat]);res.json(rows)}

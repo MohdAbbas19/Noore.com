@@ -1,0 +1,3 @@
+import { db } from "hatchable";
+
+export const access="public"; export const methods=["GET"]; export default async function(req,res){const id=Number(req.query?.id||0);const slug=String(req.query?.slug||"");const {rows}=await db.query("SELECT id,name,slug,category,price,compare_price,notes,description,ingredients,badge,visual,stock FROM store_products WHERE active=true AND ($1=0 OR id=$1) AND ($2='' OR slug=$2) LIMIT 1",[id,slug]);if(!rows[0])return res.status(404).json({error:"Product not found"});const reviews=await db.query("SELECT id,name,rating,title,body,created_at FROM store_reviews WHERE product_id=$1 AND approved=true ORDER BY created_at DESC",[rows[0].id]);res.json({...rows[0],reviews:reviews.rows})}

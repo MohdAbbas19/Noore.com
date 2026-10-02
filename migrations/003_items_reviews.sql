@@ -1,0 +1,1 @@
+CREATE TABLE store_order_items (id uuid PRIMARY KEY DEFAULT gen_random_uuid(), order_id uuid NOT NULL REFERENCES store_orders(id) ON DELETE CASCADE, product_id integer NOT NULL REFERENCES store_products(id), product_name text NOT NULL, unit_price integer NOT NULL, quantity integer NOT NULL, variant text, created_at timestamptz NOT NULL DEFAULT now())
