@@ -1,0 +1,7 @@
+[ai]
+required = true
+description = "AI used to generate ad copy, concepts, and creative directions."
+
+[auth]
+enabled = true
+providers = ["email"]

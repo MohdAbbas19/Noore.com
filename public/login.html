@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Sign in — AdForge AI</title><link rel="stylesheet" href="/theme.css"><script src="https://cdn.tailwindcss.com"></script></head><body class="min-h-screen grid place-items-center p-6 grid-bg"><main class="w-full max-w-md"><a href="/" class="brand text-xl font-bold">AdForge<span class="text-violet-600">.</span></a><div class="card mt-8 p-8"><h1 id="title" class="text-3xl font-bold">Welcome back</h1><p id="sub" class="text-gray-500 mt-2">Sign in with a one-time email code. No password needed.</p><form id="form" class="mt-7 space-y-4"><input id="email" class="field" type="email" autocomplete="username webauthn" placeholder="you@example.com" required><input id="code" class="field" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6-digit code" hidden><button id="submit" class="btn violet w-full py-3" type="submit">Continue</button><button id="back" class="w-full text-sm text-gray-500" type="button" hidden>Use a different email</button></form><div id="passkey" hidden class="mt-5 rounded-2xl bg-[#f0edff] p-4"><p class="text-sm font-semibold">Make next sign-in faster</p><p class="text-sm text-gray-600 mt-1">Add a passkey for fingerprint, face, or screen-lock sign-in.</p><button id="add" class="btn primary w-full mt-3">Add passkey</button><button id="skip" class="w-full mt-2 text-sm text-gray-500">Not now</button></div><p id="msg" class="text-sm text-gray-500 mt-5 min-h-5"></p></div></main><script>
+(function(){
+const A=window.hatchable.auth, email=document.getElementById('email'),code=document.getElementById('code'),form=document.getElementById('form'),submit=document.getElementById('submit'),back=document.getElementById('back'),msg=document.getElementById('msg'),pk=document.getElementById('passkey'),add=document.getElementById('add'),skip=document.getElementById('skip'),title=document.getElementById('title'),sub=document.getElementById('sub');
+let step='email',hasPasskey=false;
+const next=()=>{const n=new URLSearchParams(location.search).get('next')||'/';return n[0]==='/'&&!n.startsWith('//')?n:'/';};
+const say=(x,err)=>{msg.textContent=x;msg.className='text-sm mt-5 min-h-5 '+(err?'text-red-600':'text-gray-500')};
+const go=()=>location.replace(next());
+A.getSession().then(s=>{if(s&&s.user)go()}).catch(()=>{});
+if(A.attachPasskeyAutofill)A.attachPasskeyAutofill(email).then(r=>{if(r&&r.user)go()}).catch(()=>{});
+back.onclick=()=>{step='email';email.hidden=false;code.hidden=true;back.hidden=true;submit.textContent='Continue';sub.textContent='Sign in with a one-time email code. No password needed.';say('');email.focus()};
+form.onsubmit=async e=>{
+e.preventDefault();submit.disabled=true;
+try{
+if(step==='email'){
+ if(!email.value.trim()){say('Enter your email address.',true);return}
+ const r=await A.startLogin({email:email.value.trim()});hasPasskey=!!r.has_passkey;
+ if(hasPasskey&&A.supportsPasskeys&&A.supportsPasskeys()){try{const d=await A.signInWithPasskey({email:email.value.trim()});if(d&&d.user)return go()}catch(_){}}
+ step='code';email.hidden=true;code.hidden=false;back.hidden=false;submit.textContent='Sign in';sub.textContent='Enter the code sent to '+email.value.trim()+'.';say('Code sent. Check your inbox.');code.focus();
+}else{
+ const d=await A.verifyCode({email:email.value.trim(),code:code.value.trim()});
+ if(!d||!d.user)throw Error('That code did not work.');
+ if(!hasPasskey&&A.supportsPasskeys&&A.supportsPasskeys()&&!localStorage.getItem('adforge_pk_declined')){form.hidden=true;pk.hidden=false;title.textContent='You’re signed in';sub.textContent='Add a passkey to make future sign-ins faster.';say('')}
+ else go();
+}
+}catch(err){say(err.message||'Something went wrong. Please try again.',true)}
+finally{submit.disabled=false}
+};
+add.onclick=async()=>{add.disabled=true;try{const r=await A.registerPasskey();if(!r)localStorage.setItem('adforge_pk_declined','1');go()}catch(e){say(e.message||'Could not add passkey.',true);add.disabled=false}};
+skip.onclick=()=>{localStorage.setItem('adforge_pk_declined','1');go()};
+})();
+</script></body></html>
