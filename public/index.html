@@ -1,34 +1,47 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AdForge AI — Create ads that stop the scroll</title><link rel="stylesheet" href="/theme.css"><script src="https://cdn.tailwindcss.com"></script><script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script></head>
-<body class="grid-bg overflow-x-hidden">
-<div class="glow -top-64 -right-40"></div>
-<nav class="relative max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-  <a href="/" class="brand text-xl font-bold tracking-tight">AdForge<span class="text-violet-600">.</span></a>
-  <a href="/app.html" class="btn primary text-sm">Open workspace <span>↗</span></a>
-</nav>
-<main class="relative">
-<section class="max-w-6xl mx-auto px-6 pt-16 pb-20 lg:pt-24">
-  <div class="max-w-4xl fade">
-    <div class="chip mb-6"><span class="w-2 h-2 rounded-full bg-emerald-400 mr-2"></span>AI creative studio for modern marketers</div>
-    <h1 class="text-5xl md:text-7xl font-bold tracking-[-.055em] leading-[.95]">Turn a product idea into <span class="text-violet-600">campaign-ready</span> ads.</h1>
-    <p class="mt-7 text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">Generate scroll-stopping headlines, persuasive primary copy, CTAs, and visual concepts in seconds — tuned to your audience, objective, platform, and brand tone.</p>
-    <div class="mt-9 flex flex-wrap gap-3"><a href="/app.html" class="btn violet">Create your first creative <span>→</span></a><a href="#how" class="btn bg-white border border-gray-200">See how it works</a></div>
-  </div>
-  <div class="mt-20 card p-3 md:p-4 max-w-5xl fade" style="animation-delay:.12s">
-    <div class="rounded-2xl bg-[#10131d] overflow-hidden">
-      <div class="px-5 py-4 flex items-center gap-2 border-b border-white/10"><span class="w-2.5 h-2.5 rounded-full bg-red-400"></span><span class="w-2.5 h-2.5 rounded-full bg-yellow-300"></span><span class="w-2.5 h-2.5 rounded-full bg-green-400"></span><span class="ml-3 text-xs text-white/40">AdForge / Creative Studio</span></div>
-      <div class="grid md:grid-cols-[1.05fr_.95fr] gap-0">
-        <div class="p-7 md:p-10 text-white"><div class="text-xs text-white/40 uppercase tracking-widest">Campaign brief</div><div class="mt-5 text-2xl font-bold">A premium handmade perfume brand</div><p class="mt-3 text-white/55">Audience: design-conscious shoppers who want distinctive everyday fragrance.</p><div class="mt-8 flex gap-2 flex-wrap"><span class="bg-white/10 rounded-full px-3 py-1.5 text-xs">Instagram</span><span class="bg-white/10 rounded-full px-3 py-1.5 text-xs">Conversions</span><span class="bg-white/10 rounded-full px-3 py-1.5 text-xs">Premium</span></div></div>
-        <div class="p-5 md:p-7"><div class="poster rounded-2xl p-7 flex flex-col justify-end"><div class="relative z-10 text-white"><div class="text-xs uppercase tracking-[.22em] text-white/70">Ad concept</div><div class="text-3xl font-bold mt-2 leading-tight">Wear your signature.</div><p class="mt-3 text-sm text-white/75 max-w-xs">Soft studio light, sculptural bottle, warm shadow, editorial typography.</p></div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="how" class="max-w-6xl mx-auto px-6 py-20 border-t border-gray-200"><div class="grid md:grid-cols-3 gap-6">
-<div class="card p-7"><div class="text-violet-600 text-sm font-bold">01 / BRIEF</div><h3 class="text-xl font-bold mt-4">Describe the offer</h3><p class="mt-2 text-gray-600">Product, audience, goal, platform, tone and visual direction.</p></div>
-<div class="card p-7"><div class="text-violet-600 text-sm font-bold">02 / GENERATE</div><h3 class="text-xl font-bold mt-4">Let AI build the angle</h3><p class="mt-2 text-gray-600">Get a headline, primary text, CTA and a visual concept designed as one creative.</p></div>
-<div class="card p-7"><div class="text-violet-600 text-sm font-bold">03 / REFINE</div><h3 class="text-xl font-bold mt-4">Build your library</h3><p class="mt-2 text-gray-600">Keep every generated creative in your workspace so ideas stay organized.</p></div>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A premium handcrafted fragrance and beauty storefront."><title>NOORÉ — Luxury fragrance × handcrafted beauty</title><link rel="stylesheet" href="/theme.css"><script src="https://cdn.tailwindcss.com"></script></head>
+<body>
+<div class="announcement">FREE SHIPPING ON ORDERS OVER ₹999 <span>•</span> HANDCRAFTED IN SMALL BATCHES <span>•</span> SHOP THE NEW DROP</div>
+<nav class="nav" id="nav"><div class="nav-inner"><button class="mobile-menu" aria-label="Open menu" onclick="toggleMenu()">☰</button><a class="logo" href="#">NOORÉ<small>FRAGRANCE + BEAUTY</small></a><div class="nav-links" id="navLinks"><a href="#shop">Shop</a><a href="#collections">Collections</a><a href="#bestsellers">Best sellers</a><a href="#story">Our story</a></div><div class="nav-actions"><button aria-label="Search" onclick="focusSearch()">⌕</button><button aria-label="Wishlist">♡</button><button aria-label="Cart" class="cart-btn" onclick="openCart()">Bag <b id="cartCount">0</b></button></div></div></nav>
+
+<header class="hero">
+<div class="hero-copy reveal"><p class="eyebrow">THE NEW BOTANICAL EDIT</p><h1>Wear a little<br><i>ritual.</i></h1><p class="hero-sub">Sensual ittar, luminous perfume and playful jelly soaps — made slowly, beautifully, and for everyday rituals worth remembering.</p><div class="hero-buttons"><a class="btn gold" href="#shop">Explore the collection ↗</a><a class="text-link" href="#story">Discover our craft <span>→</span></a></div></div>
+<div class="hero-art reveal"><div class="sun"></div><div class="hero-card card-main"><div class="bottle cap"></div><div class="bottle glass"></div><div class="bottle-label">NOORÉ<br><small>OUD BLOOM</small></div></div><div class="hero-soap soap-a"></div><div class="hero-soap soap-b"></div><div class="hero-sticker">HAND<br>POURED<br><strong>✦</strong></div></div>
+</header>
+
+<section class="ticker"><div>SMALL BATCH <span>✦</span> VEGAN FORMULAS <span>✦</span> HANDCRAFTED <span>✦</span> BEAUTIFUL EVERYDAY <span>✦</span> SMALL BATCH <span>✦</span> VEGAN FORMULAS <span>✦</span> HANDCRAFTED <span>✦</span></div></section>
+
+<section class="categories wrap" id="collections"><div class="section-head"><div><p class="eyebrow">SHOP BY RITUAL</p><h2>Find your <i>signature.</i></h2></div><a class="text-link" href="#shop">View all →</a></div><div class="cat-grid">
+<a class="category ittar" href="#shop"><div><span>01</span><h3>Ittar</h3><p>Deep, intimate & timeless.</p></div><strong>Explore →</strong></a>
+<a class="category perfume" href="#shop"><div><span>02</span><h3>Perfume</h3><p>Modern scent, made memorable.</p></div><strong>Explore →</strong></a>
+<a class="category jelly" href="#shop"><div><span>03</span><h3>Jelly soaps</h3><p>Colourful little moments of joy.</p></div><strong>Explore →</strong></a>
 </div></section>
-</main>
-<footer class="max-w-6xl mx-auto px-6 py-10 text-sm text-gray-500 flex justify-between"><span>AdForge AI</span><span>AI-assisted creative generation</span></footer>
-</body></html>
+
+<section class="featured wrap" id="shop"><div class="section-head"><div><p class="eyebrow">CURATED FOR YOU</p><h2>Featured <i>favourites.</i></h2></div><a class="text-link" href="#">Shop everything →</a></div><div class="product-grid">
+<article class="product reveal"><button class="heart">♡</button><div class="product-img oud"><span class="badge">NEW</span><div class="mini-bottle"><div></div></div></div><div class="product-meta"><div><p>NOORÉ</p><h3>Oud Bloom Ittar</h3><span>Warm oud · Rose · Amber</span></div><b>₹799</b></div><button class="add" onclick="addCart()">Add to bag</button></article>
+<article class="product reveal"><button class="heart">♡</button><div class="product-img amber"><span class="badge">BESTSELLER</span><div class="perfume-bottle"><div></div></div></div><div class="product-meta"><div><p>NOORÉ</p><h3>Golden Dusk</h3><span>Vanilla · Saffron · Sandalwood</span></div><b>₹1,299</b></div><button class="add" onclick="addCart()">Add to bag</button></article>
+<article class="product reveal"><button class="heart">♡</button><div class="product-img soap"><span class="badge">HANDMADE</span><div class="soap-stack"><i></i><i></i><i></i></div></div><div class="product-meta"><div><p>NOORÉ</p><h3>Berry Cloud Jelly</h3><span>Strawberry · Aloe · Shea</span></div><b>₹349</b></div><button class="add" onclick="addCart()">Add to bag</button></article>
+<article class="product reveal"><button class="heart">♡</button><div class="product-img musk"><span class="badge">LIMITED</span><div class="mini-bottle dark"><div></div></div></div><div class="product-meta"><div><p>NOORÉ</p><h3>Midnight Musk</h3><span>Musk · Tonka · Cedar</span></div><b>₹899</b></div><button class="add" onclick="addCart()">Add to bag</button></article>
+</div></section>
+
+<section class="split-feature wrap" id="bestsellers"><div class="split-art"><div class="floating-bottle"></div><div class="leaf l1">✦</div><div class="leaf l2">✧</div><div class="round-soap"></div></div><div class="split-copy"><p class="eyebrow">THE HANDMADE COLLECTION</p><h2>Made by hand.<br><i>Meant to be felt.</i></h2><p>From slow-infused fragrance oils to jelly soaps poured in playful layers, every piece is made in small batches. A little imperfect. Entirely ours.</p><a class="btn dark" href="#shop">Shop handmade →</a></div></section>
+
+<section class="offer wrap"><div><p class="eyebrow">RITUAL BUNDLE</p><h2>Three moods.<br><i>One beautiful box.</i></h2><p>Choose any 2 perfumes + 2 jelly soaps and save 15%.</p><a class="btn dark" href="#shop">Build my bundle</a></div><div class="bundle"><div class="bundle-bottle one"></div><div class="bundle-bottle two"></div><div class="bundle-soap"></div><span>−15%</span></div></section>
+
+<section class="reviews wrap"><div class="section-head"><div><p class="eyebrow">LOVED BY OUR RITUAL PEOPLE</p><h2>Kind <i>words.</i></h2></div></div><div class="review-grid"><blockquote><div>★★★★★</div><p>“Golden Dusk is the first perfume I’ve finished and immediately wanted another bottle of. Warm, soft and never too loud.”</p><footer>— Aanya, Delhi</footer></blockquote><blockquote><div>★★★★★</div><p>“The jelly soaps are ridiculously cute. They look like candy but leave my skin feeling so soft.”</p><footer>— Riya, Mumbai</footer></blockquote><blockquote><div>★★★★★</div><p>“Oud Bloom has become my little evening ritual. The packaging, the scent, everything feels special.”</p><footer>— Zoya, Bengaluru</footer></blockquote></div></section>
+
+<section class="newsletter"><div><p class="eyebrow">A NOTE FROM NOORÉ</p><h2>Good things, in your inbox.</h2><p>New drops, rituals, limited batches and 10% off your first order.</p></div><form onsubmit="subscribe(event)"><input id="email" type="email" placeholder="Your email address" required><button class="btn dark">Join the ritual →</button></form></section>
+
+<footer id="story"><div class="footer-main wrap"><div><a class="logo" href="#">NOORÉ<small>FRAGRANCE + BEAUTY</small></a><p class="footer-note">Luxury fragrance × handcrafted beauty.<br>Made slowly in small batches.</p></div><div><h4>SHOP</h4><a href="#shop">Ittar</a><a href="#shop">Perfume</a><a href="#shop">Jelly soaps</a><a href="#shop">Gift sets</a></div><div><h4>HELP</h4><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Contact</a><a href="#">FAQs</a></div><div><h4>FOLLOW</h4><a href="#">Instagram ↗</a><a href="#">Pinterest ↗</a><a href="#">WhatsApp ↗</a></div></div><div class="footer-bottom wrap"><span>© 2026 NOORÉ</span><span>Luxury fragrance × handcrafted beauty</span><span>Made for rituals.</span></div></footer>
+
+<div class="toast" id="toast">Added to your bag ✦</div><div class="cart-drawer" id="drawer"><div class="drawer-head"><b>Your bag</b><button onclick="closeCart()">×</button></div><div class="drawer-body" id="drawerBody"><p>Your bag is waiting for something beautiful.</p></div><div class="drawer-foot"><div><span>Subtotal</span><b id="subtotal">₹0</b></div><button class="btn dark">Checkout →</button></div></div><div class="drawer-overlay" id="overlay" onclick="closeCart()"></div>
+<script>
+let count=0;function addCart(){count++;document.getElementById('cartCount').textContent=count;document.getElementById('toast').classList.add('show');setTimeout(()=>document.getElementById('toast').classList.remove('show'),1800)}
+function openCart(){document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open');document.getElementById('drawerBody').innerHTML=count?'<div class="cart-item"><div class="cart-thumb"></div><div><b>Selected ritual pieces</b><p>'+count+' item'+(count>1?'s':'')+' · curated for you</p></div></div>':'<p>Your bag is waiting for something beautiful.</p>';document.getElementById('subtotal').textContent=count?'₹'+(count*799).toLocaleString('en-IN'):'₹0'}
+function closeCart(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open')}
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('show')}
+function focusSearch(){let q=prompt('What are you looking for?');if(q)location.hash='shop'}
+function subscribe(e){e.preventDefault();alert('Welcome to the ritual ✦')}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>20));
+</script></body></html>
