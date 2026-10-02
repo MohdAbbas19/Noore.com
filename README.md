@@ -1,4 +1,4 @@
-# AdForge AI
+# NooreFregNBut.com
 
 [![Deploy to Hatchable](https://hatchable.com/deploy-button.svg)](https://hatchable.com/deploy?repo=https://github.com/MohdAbbas19/Noore.com)
 
